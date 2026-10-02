@@ -26,7 +26,15 @@ source, safe failure, and helpful next step.
 OUT: password resets, ticket creation, personal student records, voice, automatic
 actions, and answers from unapproved material.
 ## 6. AI critique and human decision
-- ChatGPT suggestion: <ADD ONE SHORT SUGGESTION>
-- Claude suggestion: <ADD ONE SHORT SUGGESTION>
+- ChatGPT suggestion:
+    1. GR-01 — Source grounding.
+    2. A visible approved-source citation does not establish how the system handles conflicting approved sources.
+    3. EVIDENCE: E-02 identifies conflicting campus information; citing one source alone would not resolve that conflict.
+    4. RECOMMENDATION: Add “When approved sources conflict on the requested next step, disclose the conflict and use SF-01”; test with two approved sources giving incompatible instructions.
+- Claude suggestion:
+    1. **Section 2 / FR-01 / GR-01 / SF-01 (evidence-to-requirement trace)**
+    2. The evidence is about an academic advisor handling multi-office questions, not students asking IT Support questions (EVIDENCE: E-01, E-02); the claim that "advisors have difficulty identifying the most current source" is already an ASSUMPTION (A-01), yet no requirement says how "approved" or "current" is decided, so GR-01 and SF-01 rest on an undefined term, and the link from advisor evidence to student IT Support needs is an unvalidated ASSUMPTION.
+    3. Without a testable definition of "approved source," GR-01 and SF-01 cannot be pass/fail tested, and the whole MVP boundary (IN/OUT) depends on a list that does not yet exist, so Week 4 cannot fairly compare the local and hosted paths.
+    4. Add one line to Section 5 or GR-01: "Approved sources = [a named list of IT Support pages/documents chosen by the human team, each with a last-  reviewed date]," and mark the advisor-to-student link as ASSUMPTION until validated; test: ask one question answered by a listed source (expect answer plus that source) and one not covered by it (expect abstention plus next step).
 - My decision: Accepted / Revised / Rejected
 - My reason: <EXPLAIN USING WEEK 2 EVIDENCE, SCOPE, OR TESTABILITY>
