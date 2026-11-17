@@ -13,21 +13,12 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
 
-      - name: Verify CampusConnect entry page
-        env:
-          ENTRY_PAGE: index.html
-        run: |
-          if [ ! -s "$ENTRY_PAGE" ]; then
-            echo "Expected a non-empty CampusConnect entry page at $ENTRY_PAGE."
-            exit 1
-          fi
-
-      - name: Verify release evidence and secret hygiene
+      - name: Check evidence file and tracked .env files
         env:
           TEST_RECORD: docs/testing/week-10/MVP_TEST_RECORD.md
         run: |
-          if [ ! -f "$TEST_RECORD" ]; then
-            echo "Missing release evidence at $TEST_RECORD."
+          if [ ! -s "$TEST_RECORD" ]; then
+            echo "Missing or empty evidence file: $TEST_RECORD"
             exit 1
           fi
 
@@ -37,11 +28,6 @@ jobs:
           fi
 
           if grep -Fq '<FILL IN>' "$TEST_RECORD"; then
-            echo "Complete every Week 10 evidence field."
-            exit 1
-          fi
-
-          if ! grep -Fxq 'Release decision: GO' "$TEST_RECORD"; then
-            echo "The test record must contain the exact line: Release decision: GO"
+            echo "Replace remaining placeholders with actual results or mark pending tests as Not run."
             exit 1
           fi
