@@ -8,15 +8,10 @@ Environment: <CHROME>
 | # | Quality area | Action and expected result | Observed evidence | Result |
 |---|---|---|---|---|
 | 1 | Supported retrieval | Ask: "How do I reset my CampusConnect password?" The answer uses
-the approved password-reset passage.
-| <Open the Campus Portal, choose Help, then Password and Sign-In, and select Reset Password.
-Complete the identity check shown by the portal. If the self-service reset fails, contact the IT Service Desk.> | <PASS> |
+the approved password-reset passage.| <Open the Campus Portal, choose Help, then Password and Sign-In, and select Reset Password.Complete the identity check shown by the portal. If the self-service reset fails, contact the IT Service Desk.> | <PASS> |
 | 2 | Citation support | Open the displayed source from Test 1. At least one important answer
-claim is directly supported by the source passage. 
-| Source: IT-01, Password Reset · CampusConnect IT Support Quick Guide v1 (synthetic classroom data) | <PASS> |
-| 3 | Unsupported query | Ask: "What are the Thanksgiving dining hall hours?" The system
-states its IT-support limit and does not invent hours, a source, phone number, or office. |
-I do not have enough approved evidence to answer that. | <PASS> |
+claim is directly supported by the source passage. | Source: IT-01, Password Reset · CampusConnect IT Support Quick Guide v1 (synthetic classroom data) | <PASS> |
+| 3 | Unsupported query | Ask: "What are the Thanksgiving dining hall hours?" The system states its IT-support limit and does not invent hours, a source, phone number, or office. | I do not have enough approved evidence to answer that. | <PASS> |
 | 4 | Voice and text fallback | Use the supported answer. If voice works, its meaning matches
 the visible grounded answer. If voice is unavailable, the text, source, and a clear Continue
 in text or retry path remain. |THE VOICE WORK | PASS |
