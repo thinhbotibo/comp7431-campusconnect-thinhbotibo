@@ -36,7 +36,7 @@ Severity: <MINOR>
 Smallest repair made: <No repair required">
 Focused retest result: <GOOD>
 ## 4. Release gate
-Release decision: <GO>
+Release decision: <not run>
 Decision reason: <SCORE IS GOOD>
 GitHub Actions run: <(https://campus-it-answer-nook.lovable.app/)>
 Release tag if GO: v0.9.0-rc1
