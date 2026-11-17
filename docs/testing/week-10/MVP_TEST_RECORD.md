@@ -36,9 +36,9 @@ Severity: <MINOR>
 Smallest repair made: <No repair required">
 Focused retest result: <GOOD>
 ## 4. Release gate
-Release decision: <not run>
+Release decision: <go>
 Decision reason: <SCORE IS GOOD>
-GitHub Actions run: <(https://campus-it-answer-nook.lovable.app/)>
+GitHub Actions run: <[(https://campus-it-answer-nook.lovable.app/)](https://github.com/thinhbotibo/comp7431-campusconnect-thinhbotibo/actions/runs/43991740689)>
 Release tag if GO: v0.9.0-rc1
 ## 5. Engineering and AI Use Log
 What I tested myself: <TEST ALL WHAT I NEED THE AI SUPPORT TO DO>
