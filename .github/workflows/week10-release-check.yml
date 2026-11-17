@@ -1,0 +1,33 @@
+name: Week 10 Release Check
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  release-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Check evidence file and tracked .env files
+        env:
+          TEST_RECORD: docs/testing/week-10/MVP_TEST_RECORD.md
+        run: |
+          if [ ! -s "$TEST_RECORD" ]; then
+            echo "Missing or empty evidence file: $TEST_RECORD"
+            exit 1
+          fi
+
+          if git ls-files | grep -E '(^|/)\.env$' > /dev/null; then
+            echo "A tracked .env file is not allowed."
+            exit 1
+          fi
+
+          if grep -Fq '<FILL IN>' "$TEST_RECORD"; then
+            echo "Replace remaining placeholders with actual results or mark pending tests as Not run."
+            exit 1
+          fi
