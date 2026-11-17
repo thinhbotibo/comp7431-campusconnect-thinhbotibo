@@ -1,31 +1,47 @@
 name: Week 10 Release Check
+
 on: [push, pull_request]
+
 permissions:
   contents: read
+
 jobs:
- release-check:
-   runs-on: ubuntu-latest
-   steps:
-       - name: Check out repository
-         uses: actions/checkout@v6
-       - name: Set up Python
-         uses: actions/setup-python@v5
-         with:
-           python-version: "3.12"
-       - name: Compile the CampusConnect app
-         run: |
-           test -f app.py
-           test -f requirements.txt
-           python -m py_compile app.py
-       - name: Verify release evidence and secret hygiene
-         run: |
-           test -f docs/testing/week-10/MVP_TEST_RECORD.md
-           if git ls-files | grep -Eq '(^|/)\.env$'; then
-             echo "A tracked .env file is not allowed."
-             exit 1
-           fi
-           if grep -q '<FILL IN>' docs/testing/week-10/MVP_TEST_RECORD.md; then
-             echo "Complete every Week 10 evidence field."
-             exit 1
-           fi
-           grep -q '^Release decision: GO$' docs/testing/week-10/MVP_TEST_RECORD.md
+  release-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Verify CampusConnect entry page
+        env:
+          ENTRY_PAGE: index.html
+        run: |
+          if [ ! -s "$ENTRY_PAGE" ]; then
+            echo "Expected a non-empty CampusConnect entry page at $ENTRY_PAGE."
+            exit 1
+          fi
+
+      - name: Verify release evidence and secret hygiene
+        env:
+          TEST_RECORD: docs/testing/week-10/MVP_TEST_RECORD.md
+        run: |
+          if [ ! -f "$TEST_RECORD" ]; then
+            echo "Missing release evidence at $TEST_RECORD."
+            exit 1
+          fi
+
+          if git ls-files | grep -E '(^|/)\.env$' > /dev/null; then
+            echo "A tracked .env file is not allowed."
+            exit 1
+          fi
+
+          if grep -Fq '<FILL IN>' "$TEST_RECORD"; then
+            echo "Complete every Week 10 evidence field."
+            exit 1
+          fi
+
+          if ! grep -Fxq 'Release decision: GO' "$TEST_RECORD"; then
+            echo "The test record must contain the exact line: Release decision: GO"
+            exit 1
+          fi
