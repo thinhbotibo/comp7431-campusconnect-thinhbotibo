@@ -3,7 +3,7 @@ Student: <Phuc Pham>
 Date: <11/16/2026>
 Branch: release/week-10-rc1
 Local URL: http://127.0.0.1:7860
-Environment: <FILL IN - example: Chrome on macOS; LM Studio local server>
+Environment: <CHROME>
 ## 1. Six-test MVP record
 | # | Quality area | Action and expected result | Observed evidence | Result |
 |---|---|---|---|---|
